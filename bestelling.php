@@ -44,6 +44,7 @@
         </Table>
         </center>
     <form action="b_process.php" method="post">
+        <input type='submit' name='bon' value='Export to excel file' />
         <input type="hidden" name="bestelling_id" value="<?php echo $bestelling_id;?>">
     <center>
         <label>Tafel Nummer</label>
