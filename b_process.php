@@ -57,3 +57,44 @@ if (isset($_GET['edit'])) {
     
         header("location: bestelling.php");
     }
+//excel export klant
+$output = '';
+if (isset($_POST["export"])) {
+    $query = "SELECT * FROM klanten ORDER BY klant_id DESC LIMIT 1";
+    $result = mysqli_query($mysqli, $query);
+    if (mysqli_num_rows($result) > 0) {
+        $output .= '
+   <table class="table" bordered="1">  
+   <thead>
+   <tr>
+       <th>Check In</th>
+       <th>Check Out</th>
+       <th>Kamer Nummer</th>
+       <th>Naam</th>
+       <th>Adres</th>
+       <th>Plaats</th>
+       <th>Postcode</th>
+       <th>Telefoon</th>
+   </tr>
+   </thead>
+  ';
+        $row = $result->fetch_assoc(); {
+            $output .= '
+   <tr>
+   <td>' . $row['r_periode_in'] . '</td>
+   <td>' . $row['r_periode_out'] . '</td>
+   <td>' . $row['klant_id'] . '</td>
+   <td>' . $row['naam'] . '</td>
+   <td>' . $row['adres'] . '</td>
+   <td>' . $row['plaats'] . '</td>
+   <td>' . $row['postcode'] . '</td>
+   <td>' . $row['telefoon'] . '</td>
+   </tr>      
+   ';
+        }
+        $output .= '</table>';
+        header('Content-Type: application/xls');
+        header('Content-Disposition: attachment; filename=Reservering.xls');
+        echo $output;
+    }
+}
