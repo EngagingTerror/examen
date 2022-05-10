@@ -54,12 +54,14 @@
                 <option value="Hamburger">Hamburger</option>
                 <option value="Patat">Patat</option>
                 <option value="Patat">sla</option>
+                <option value="Geen">Geen</option>
             </select>
             <label>Drinken</label>
             <select name="drinken">
                 <option value="Cola">Cola</option>
                 <option value="Fanta">Fanta</option>
                 <option value="Water">Water</option>
+                <option value="Geen">Geen</option>
             </select>
         <label>bestel tijd</label>
         <input type="text" name="bestel_tijd" value="<?php echo $Bestel_tijd;?>" placeholder="tijd- 00:00:00">
